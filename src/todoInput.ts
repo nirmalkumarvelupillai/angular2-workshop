@@ -11,7 +11,7 @@ import {TodoService} from './todoService'
     template: `    
         <div class="col-md-6">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="What todo..." #todo>
+                <input type="text" class="form-control" placeholder="What todo..." (keypress)="enterTask($event,todo)" #todo>
                 <span class="input-group-btn">
                     <a class="btn btn-primary" (click)="showLogInput($event,todo)">ADD</a>
                 </span>
@@ -32,5 +32,11 @@ export class TodoInput {
         this._todoService.addTodo(todo.value);
         todo.value = '';
         //console.log(e,this._todoService.todos);
+    }
+    
+    enterTask(e:KeyboardEvent,todo:HTMLInputElement){
+        if(e.keyCode === 13){
+            this.showLogInput(e,todo);
+        }
     }
 }
