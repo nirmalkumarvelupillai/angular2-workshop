@@ -1,13 +1,7 @@
-//import {Component, View } from 'angular2/core';
-import {Component,Inject} from 'angular2/core';
-import {TodoService} from './todoService'
+import {Component,Inject} from "angular2/core";
+import {TodoService} from "./todoService";
 @Component({
-    selector: 'todo-input',
-
-
-//})
-//@View({ 
-
+    selector: "todo-input",
     template: `    
         <div class="col-md-6">
             <div class="input-group">
@@ -21,20 +15,18 @@ import {TodoService} from './todoService'
 })
 
 export class TodoInput {
-    public _todoService:TodoService;
-    
-    constructor(@Inject(TodoService) todoService:TodoService){
+    public _todoService: TodoService;
+    constructor(@Inject(TodoService) todoService: TodoService){
         this._todoService = todoService;
-        //console.log(this._todoService);
+        // console.log(this._todoService);
     }
-    
-    showLogInput(e:Event,todo:HTMLInputElement){
+    showLogInput(e: Event, todo: HTMLInputElement){
         this._todoService.addTodo(todo.value);
-        todo.value = '';
-        //console.log(e,this._todoService.todos);
+        todo.value = "";
+        // console.log(e,this._todoService.todos);
     }
-    
-    enterTask(e:KeyboardEvent,todo:HTMLInputElement){
+
+    enterTask(e:KeyboardEvent, todo: HTMLInputElement){
         if(e.keyCode === 13){
             this.showLogInput(e,todo);
         }

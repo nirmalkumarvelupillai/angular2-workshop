@@ -1,24 +1,19 @@
-//import {Component, View} from 'angular2/core';
-import {Component} from 'angular2/core';
-import {TodoInput} from './todoInput';
-import {TodoList} from './todoList';
-@Component({
-    selector: 'app',
+import {Component} from "angular2/core";
 
-//})
-//@View({ 
-    directives:[TodoInput,TodoList],
+import {TodoComponent} from "./todo/todo.component";
+import {TabDemoComponent} from "./tab/tab.demo";
+
+@Component({
+    selector: "app",
+    directives: [
+        TodoComponent,
+        TabDemoComponent
+    ],
     template: `
-        <div class="container">
-            <div class="row">
-                <todo-input></todo-input>
-            </div>
-            <br/>
-            <div class="row">
-                <todo-list></todo-list>
-            </div>
-        </div>
-                
+        <hr/>
+        <tab-demo></tab-demo>
+        <hr/>
+        <todo-demo></todo-demo>                
     `
 })
 
