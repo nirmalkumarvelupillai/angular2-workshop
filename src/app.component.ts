@@ -20,15 +20,15 @@ import {DataGridDemoComponent} from "./datagrid/datagrid.demo";
             <hr/>
             <datagrid-demo></datagrid-demo>
         </div>
-        <div [hidden]="true">
+        <div [hidden]="false">
             <hr/>
             <todo-demo></todo-demo>
         </div>
-        <div [hidden]="true">        
+        <div [hidden]="false">        
             <hr/>
             <tab-demo></tab-demo>
         </div>
-        <div [hidden]="true">                        
+        <div [hidden]="false">                        
             <hr/>
             <zippy-demo></zippy-demo>
         </div>                
