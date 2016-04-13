@@ -7,6 +7,8 @@ import {ZippyDemoComponent} from "./zippy/zippy.demo";
 import {DataGridDemoComponent} from "./datagrid/datagrid.demo";
 import {PaginationDemoComponent} from "./pagination/pagination.demo";
 
+import {UpperComponent} from "./upper.component";
+
 @Component({
     selector: "app",
     directives: [
@@ -14,15 +16,22 @@ import {PaginationDemoComponent} from "./pagination/pagination.demo";
         TabDemoComponent,
         ZippyDemoComponent,
         DataGridDemoComponent,
-        PaginationDemoComponent
+        PaginationDemoComponent,
+        UpperComponent
     ],
     providers:[EmitterService],
     template: `
-        <div [hidden]="false">
+
+        <div [hidden]="true">
+            <hr/>
+            <upper>make me upper</upper>
+        </div>    
+        
+        <div [hidden]="true">
             <hr/>
             <pagination-demo></pagination-demo>
         </div>
-        <div [hidden]="true">
+        <div [hidden]="false">
             <hr/>
             <datagrid-demo></datagrid-demo>
         </div>
@@ -41,4 +50,9 @@ import {PaginationDemoComponent} from "./pagination/pagination.demo";
     `
 })
 
-export class AppComponent { }
+export class AppComponent { 
+    constructor(){
+
+    }
+
+}

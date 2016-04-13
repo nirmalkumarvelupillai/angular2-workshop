@@ -1,12 +1,14 @@
 import {Component} from "angular2/core";
 import {DataGridComponent} from "./datagrid.component";
 
+import {DataGridDemoService} from "./datagrid.demoservice";
+
 @Component({
     selector: "datagrid-demo",
     directives: [DataGridComponent],
-    providers: [],
+    providers: [DataGridDemoService],
     template: `        
-        <datagrid [map]="tablemap" [data]="tabledata">
+        <datagrid [map]="tablemap" [(data)]="tabledata" (edit-row)="editData($event)">
         </datagrid>
     `
 })
@@ -15,30 +17,31 @@ export class DataGridDemoComponent {
     tablemap: any[];
     tabledata: any[];
 
-    constructor() {
+    constructor(private _gridDataService: DataGridDemoService) {
         this.tablemap = [
             {
-                name: "ID",
-                map: "id"
+                name: "City",
+                map: "city",
             }, {
-                name: "First Name",
-                map: "firstname"
+                name: "Color",
+                map: "colorcode"
+            }, {
+                name: "Edit",
+                map: "edit"
             }
         ];
 
-        this.tabledata = [
-            {
-                id: "232323",
-                dummy: "dummy1",
-                firstname: "James",
-                lastname: "Vasanth"
-            }, {
-                id: "823233",
-                dummy: "dummy2",
-                firstname: "John",
-                lastname: "Jacob"
-            }
-        ];
+        this.tabledata = this._gridDataService.gridData();
+    }
+
+
+    editData($event: any) {
+        const index = $event.index;
+        const editObj = this.tabledata[index];
+        editObj.city = "chennai";
+        this.tabledata[index] = {};
+        //this.tabledata[index] = editObj;
+
     }
 
 }
